@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.search-result-item-box.data-v-5a87da64 {
+  margin-bottom: 32rpx;
+}
+.search-result-item-box .item-title.data-v-5a87da64 {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #000;
+}
+.search-result-item-box .item-info-box.data-v-5a87da64 {
+  display: flex;
+  margin-top: 16rpx;
+}
+.search-result-item-box .item-info-box .item-desc-box.data-v-5a87da64 {
+  width: 65%;
+  font-size: 28rpx;
+  color: #555555;
+}
+.search-result-item-box .item-info-box .item-desc-box .item-desc-bottom.data-v-5a87da64 {
+  margin-top: 16rpx;
+  display: flex;
+  color: #999;
+  font-size: 24rpx;
+}
+.search-result-item-box .item-info-box .item-desc-box .item-desc-bottom .item-author.data-v-5a87da64 {
+  margin-right: 30rpx;
+}
+.search-result-item-box .item-info-box .item-desc-box .item-desc-bottom .item-read-num .read-num-icon.data-v-5a87da64 {
+  color: #999;
+  margin-right: 10px;
+}
+.search-result-item-box .item-info-box .item-img.data-v-5a87da64 {
+  width: 33%;
+  height: 70px;
+}
+
