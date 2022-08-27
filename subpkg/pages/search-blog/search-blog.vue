@@ -1,51 +1,57 @@
 <template>
-  <view class="search-blog-container">
-    <view>
-      <view class="search-bar-box">
-        <my-search
-          :is-show-input="true"
-          :placeholder-text="defaultText"
-          v-model="searchVal"
-          :config="{
+	<view class="search-blog-container">
+		<view>
+			<view class="search-bar-box">
+				<my-search
+					:is-show-input="true"
+					:placeholder-text="defaultText"
+					v-model="searchVal"
+					:config="{
             backgroundColor: '#f1f0f3'
           }"
-          @search="onSearchConfirm"
-          @focus="onSearchFocus"
-          @blur="onSearchBlur"
-          @clear="onSearchClear"
-          @cancel="onSearchCancel"
-        />
-      </view>
-    </view>
-    <!-- 热搜列表 -->
-    <view
-      class="search-hot-list-box card"
-      v-if="showType === HOT_LIST"
-    >
-      <search-hot-list @onSearch="onSearchConfirm" />
-    </view>
-    <!-- 搜索历史 -->
-    <view
-      class="search-hisroty-box"
-      v-if="showType === SEARCH_HISTORY"
-    >
-      <search-histroy
-        :search-data="searchData"
-        @onSearch="onSearchConfirm"
-      />
-    </view>
-    <!-- 搜索结果 -->
-    <view
-      class="search-result-list-box"
-      v-if="showType === SEARCH_RESULT"
-    >
-      <search-result-list :queryStr="searchVal" />
-    </view>
-  </view>
+					@search="onSearchConfirm"
+					@focus="onSearchFocus"
+					@blur="onSearchBlur"
+					@clear="onSearchClear"
+					@cancel="onSearchCancel"
+				/>
+			</view>
+		</view>
+		<!-- 热搜列表 -->
+		<view
+			class="search-hot-list-box card"
+			v-if="showType === HOT_LIST"
+		>
+			<search-hot-list @onSearch="onSearchConfirm" />
+		</view>
+		<!-- 搜索历史 -->
+		<view
+			class="search-hisroty-box"
+			v-else-if="showType === SEARCH_HISTORY"
+		>
+			<search-histroy
+				:search-data="searchData"
+				@onSearch="onSearchConfirm"
+			/>
+		</view>
+		<!-- 搜索结果 -->
+		<view
+			class="search-result-list-box"
+			v-else
+		>
+			<search-result-list
+				ref="mescrollItem"
+				:queryStr="searchVal"
+			/>
+		</view>
+	</view>
 </template>
 
 <script>
-	import { mapMutations } from 'vuex'
+	import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
+	import {
+		mapMutations
+	} from 'vuex'
 	import {
 		getDefaultText
 	} from '@/api/search'
@@ -57,6 +63,7 @@
 	const SEARCH_RESULT = '2'
 	export default {
 		name: 'SearchBlog',
+		mixins: [MescrollCompMixin],
 		data() {
 			return {
 				// 输入框的内容
@@ -112,7 +119,7 @@
 
 <style lang="scss">
 	.search-blog-container {
-		background-color: $uni-bg-color;
+		// background-color: $uni-bg-color;
 
 		.search-bar-box {
 			padding: $uni-spacing-row-sm;

@@ -21,9 +21,9 @@ export function getSearchHotList () {
 /**
  * 搜索结果
  */
-export function getSearchResult () {
+export function getSearchResult (data) {
 	return request({
 		url: '/search',
-		data: {}
+		data
 	})
 }

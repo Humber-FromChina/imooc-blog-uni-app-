@@ -1,55 +1,56 @@
 <template>
-  <view class="hot-container">
-    <!-- 微信小程序的image组件 -->
-    <image
-      class="logo"
-      src="@/static/images/logo.png"
-      mode="aspectFit"
-    />
-    <view
-      class="search-box"
-      @click="onToSearch"
-    >
-      <my-search placeholder-text="uni-app 自定义组件" />
-    </view>
-    <view class="tab-sticky">
-      <my-tabs
-        :tab-data="tabData"
-        :default-index="currentIndex"
-        @tabClick="onTabClick"
-      />
-    </view>
-    <!-- 可以通过swiper实现滑动效果 -->
-    <swiper
-      class="swiper"
-      :current="currentIndex"
-      :style="{ height: currentSwiperHeight + 'px' }"
-      @animationfinish="onSwiperEnd"
-      @change="onSwiperChange"
-    >
-      <swiper-item
-        v-for="(tabItem, tabIndex) in tabData"
-        :key="tabIndex"
-        class="swiper-item"
-      >
-        <view>
-          <uni-load-more
-            v-if="isLoading"
-            status="loading"
-          />
-          <block v-else>
-            <hot-list-item
-              :class="'hot-list-item-' + tabIndex"
-              v-for="(item, index) of listData[tabIndex]"
-              :key="index"
-              :data="item"
-              :ranking="index + 1"
-            />
-          </block>
-        </view>
-      </swiper-item>
-    </swiper>
-  </view>
+	<view class="hot-container">
+		<!-- 微信小程序的image组件 -->
+		<image
+			class="logo"
+			src="@/static/images/logo.png"
+			mode="aspectFit"
+		/>
+		<view
+			class="search-box"
+			@click="onToSearch"
+		>
+			<my-search placeholder-text="uni-app 自定义组件" />
+		</view>
+		<view class="tab-sticky">
+			<my-tabs
+				:tab-data="tabData"
+				:default-index="currentIndex"
+				@tabClick="onTabClick"
+			/>
+		</view>
+		<!-- 可以通过swiper实现滑动效果 -->
+		<swiper
+			class="swiper"
+			:current="currentIndex"
+			:style="{ height: currentSwiperHeight + 'px' }"
+			@animationfinish="onSwiperEnd"
+			@change="onSwiperChange"
+		>
+			<swiper-item
+				v-for="(tabItem, tabIndex) in tabData"
+				:key="tabIndex"
+				class="swiper-item"
+			>
+				<view>
+					<uni-load-more
+						v-if="isLoading"
+						status="loading"
+					/>
+					<block v-else>
+						<hot-list-item
+							:class="'hot-list-item-' + tabIndex"
+							v-for="(item, index) of listData[tabIndex]"
+							:key="index"
+							:data="item"
+							:ranking="index + 1"
+							@click="onItemClick(item)"
+						/>
+					</block>
+				</view>
+			</swiper-item>
+		</swiper>
+	</view>
 </template>
 
 <script>
@@ -111,7 +112,7 @@
 			/**
 			 * 跳转到search-blog
 			 */
-			onToSearch () {
+			onToSearch() {
 				uni.navigateTo({
 					url: '/subpkg/pages/search-blog/search-blog'
 				})
@@ -147,6 +148,14 @@
 							})
 							resolve(sum)
 						}).exec()
+				})
+			},
+			/**
+			 * 热搜列表item点击事件
+			 */
+			onItemClick(item) {
+				uni.navigateTo({
+					url: `/subpkg/pages/blog-detail/blog-detail?author=${item.user_name}&articleId=${item.id}`
 				})
 			}
 		}
