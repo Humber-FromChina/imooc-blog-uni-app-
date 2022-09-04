@@ -1,3 +1,4 @@
+import store from '../store';
 // 封装请求对象
 const BASE_URL = 'https://api.imooc-blog.lgdsunday.club/api'
 
@@ -10,7 +11,8 @@ function request({
 		uni.request({
 			url: BASE_URL + url,
 			header: {
-				icode: '8C4190D2E6F604D1'
+				icode: '8C4190D2E6F604D1',
+				Authorization: store.state.user.token
 			},
 			data,
 			method,
