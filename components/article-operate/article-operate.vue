@@ -53,9 +53,6 @@
 		data() {
 			return {};
 		},
-		created() {
-			debugger
-		},
 		methods: {
 			...mapActions('user', ['isLogin']),
 			/**

@@ -20,7 +20,10 @@
 							<!-- 作者 -->
 							<text class="author">{{ articleData.nickName }}</text>
 							<!-- 发布时间 -->
-							<text class="release-time">{{ articleData.date }}</text>
+							<rich-text
+								class="release-time"
+								:nodes="articleData.date"
+							/>
 						</view>
 					</view>
 					<view class="detail-right">
@@ -114,7 +117,7 @@
 			};
 		},
 		onLoad(options) {
-			
+
 			this.author = options.author;
 			this.articleId = options.articleId;
 			console.log(options, options.articleId, this.articleId)
@@ -241,7 +244,8 @@
 </script>
 
 <style lang="scss">
-	@import '~@/styles/article-detail.scss';
+	// @import '~@/styles/article-detail.scss';
+
 	.detail-container {
 		padding: $uni-spacing-col-base $uni-spacing-row-base;
 		padding-bottom: 108px;
