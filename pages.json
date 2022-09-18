@@ -71,6 +71,12 @@
 				"navigationBarTitleText": "登录",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/video-detail/video-detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 
 		}]
 	}]
