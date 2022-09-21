@@ -48,7 +48,7 @@
 					title: '加载中'
 				});
 				await userCollect({
-					articleId: this.articleData.articleId,
+					articleId: this.articleData.articleId || this.articleData.id,
 					isCollect: !this.articleData.isCollect
 				});
 				// 关闭加载

@@ -48,7 +48,7 @@
 					title: '加载中'
 				});
 				await userPraise({
-					articleId: this.articleData.articleId,
+					articleId: this.articleData.articleId || this.articleData.id,
 					isPraise: !this.articleData.isPraise
 				});
 				// 关闭加载
