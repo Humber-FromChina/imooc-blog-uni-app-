@@ -4,6 +4,9 @@ import App from './App'
 import store from './store'
 import './styles/global.scss'
 
+// 文章详情样式
+import './styles/article-detail.scss'
+
 // 注册过滤器的最佳实践
 import * as filters from './filters/index.js'
 Object.keys(filters).forEach(key => {

@@ -181,8 +181,14 @@
 
 		.tab-sticky {
 			position: sticky;
-			top: 0;
 			z-index: 99;
+			/* #ifdef H5 */
+			top: 44px;
+			/* #endif */
+			/* #ifndef H5 */
+			top: 0px;
+			/* #endif */
+
 		}
 	}
 </style>

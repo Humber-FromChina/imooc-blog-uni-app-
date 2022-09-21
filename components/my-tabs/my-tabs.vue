@@ -1,44 +1,44 @@
 <template>
-  <view class="tab-container">
-    <view class="tab-box">
-      <scroll-view
-        scroll-x
-        class="scroll-view"
-        scroll-with-animation
-        :scroll-left="scrollLeft"
-      >
-        <view class="scroll-content">
-          <view class="tab-item-box">
-            <block
-              v-for="(item, index) in tabData"
-              :key="index"
-            >
-              <view
-                :id="'_tab_' + index"
-                class="tab-item"
-                :class="{ &quot;tab-item-active&quot;: activeIndex == index }"
-                @click="onTabClick(index)"
-                :style="{
+	<view class="tab-container">
+		<view class="tab-box">
+			<scroll-view
+				scroll-x
+				class="scroll-view"
+				scroll-with-animation
+				:scroll-left="scrollLeft"
+			>
+				<view class="scroll-content">
+					<view class="tab-item-box">
+						<block
+							v-for="(item, index) in tabData"
+							:key="index"
+						>
+							<view
+								:id="'_tab_' + index"
+								class="tab-item"
+								:class="{ &quot;tab-item-active&quot;: activeIndex == index }"
+								@click="onTabClick(index)"
+								:style="{
                   color: activeIndex === index ? defaultConfig.activeTextColor : defaultConfig.textColor
                 }"
-              >
-                {{ item.label || item }}
-              </view>
-            </block>
-          </view>
-          <view
-            class="underLine"
-            :style="{
+							>
+								{{ item.label || item }}
+							</view>
+						</block>
+					</view>
+					<view
+						class="underLine"
+						:style="{
               transform: 'translateX(' + slider.left + 'px)',
               width: defaultConfig.underLineWidth + 'px',
               height: defaultConfig.underLineHeight + 'px',
               color: defaultConfig.underLineColor
             }"
-          />
-        </view>
-      </scroll-view>
-    </view>
-  </view>
+					/>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
 </template>
 
 <script>
@@ -193,4 +193,15 @@
 			}
 		}
 	}
+
+	/* #ifdef H5 */
+	/deep/ .uni-scroll-view::-webkit-scrollbar {
+		display: none;
+	}
+
+	/deep/ .uni-scroll-view {
+		scroll-width: none;
+	}
+
+	/* #endif */
 </style>
